@@ -63,7 +63,6 @@ export const Additionally = styled.div`
 `;
 
 export const AdditionallyLi = styled(NavLink)`
-  /* color: black; */
   &:hover {
     color: #c80606;
   }

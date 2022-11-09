@@ -16,14 +16,14 @@ const MovieView = () => {
 
   const { movieId } = useParams();
 
-  const localion = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     fetchMovie(movieId).then(setMovie);
   }, [movieId]);
 
-  const { original_title, poster_path, overview, genres } = movie;
-  const back = localion.state?.from ?? '/';
+  const { original_title, poster_path, overview, genres, vote_average } = movie;
+  const back = location.state?.from ?? '/';
   return (
     <div>
       <Information>
@@ -41,7 +41,9 @@ const MovieView = () => {
         </div>
         <div>
           <Header>{original_title}</Header>
-          <p>User Score:</p>
+          <p>
+            User Score: <span>{Math.round(10 * vote_average)}</span>%
+          </p>
           <h3>Overview</h3>
           <p>{overview}</p>
           <h4>Genres</h4>
@@ -54,10 +56,20 @@ const MovieView = () => {
         <p>Additional information</p>
         <Ul>
           <li>
-            <AdditionallyLi to={`cast`}>Cast</AdditionallyLi>
+            <AdditionallyLi
+              to={`cast`}
+              state={{ from: location.state?.from ?? '/' }}
+            >
+              Cast
+            </AdditionallyLi>
           </li>
           <li>
-            <AdditionallyLi to={'reviews'}>Reviews</AdditionallyLi>
+            <AdditionallyLi
+              to={'reviews'}
+              state={{ from: location.state?.from ?? '/' }}
+            >
+              Reviews
+            </AdditionallyLi>
           </li>
         </Ul>
       </Additionally>
