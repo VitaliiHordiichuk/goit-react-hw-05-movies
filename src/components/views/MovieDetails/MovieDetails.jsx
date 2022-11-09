@@ -42,7 +42,7 @@ const MovieView = () => {
         <div>
           <Header>{original_title}</Header>
           <p>
-            User Score: <span>{Math.round(10 * vote_average)}</span>%
+            User Score: <>{Math.round(10 * vote_average)}%</>
           </p>
           <h3>Overview</h3>
           <p>{overview}</p>
